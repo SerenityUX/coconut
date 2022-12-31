@@ -3,10 +3,17 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
+import {
+  useWindowSize,
+  useWindowWidth,
+  useWindowHeight,
+} from '@react-hook/window-size'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [width, height] = useWindowSize()
+
   const steps = [
     {
       content: "demographics",
@@ -21,7 +28,7 @@ export default function Home() {
       number: 3,
     },
   ];
-  const [step, setStep] = useState(steps[0]);
+  const [step, setStep] = useState(steps[2]);
 
   return (
     <div>
@@ -31,14 +38,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
+        <main className={styles.main}>
+        <div className={styles.navigation}>
+          <div className={styles.topNavigation}>
           <p onClick={() => {
-            
+            if(step["number"] - 2 >= 0) {
+              setStep(steps[step["number"] - 2])
+            }
           }}>back</p>
-          <p>{step["number"]}/3</p>
           <p>{step["content"]}</p>
-
+          <p>{step["number"]}/3</p>
+          </div>
+          <div>
+          
+          <div style={{width: (0.33 * (step["number"])) * (width - 33), transition: "all 1s", backgroundColor: "#EC1663", height: "12px", borderRadius: step["number"] == 3 ? ("16px 16px 16px 16px") : ("16px 0px 0px 16px")}}/>
+          <div style={{width: "100%", backgroundColor: "#fff", height: 12, borderRadius: 16}}></div>
+          </div>
         </div>
       </main>
     </div>

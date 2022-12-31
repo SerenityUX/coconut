@@ -1,3 +1,27 @@
+
+
 .main {
   display: flex;
+  margin: -8px;
+  font-family: "Helvetica Neue"
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 16px;
+  margin: 0px;
+  color: #fff;
+  background-color: #5A0F2A;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+
+} 
+
+.topNavigation {
+  justify-content: space-between;
+  display: flex;
+  width: 100%
 }
