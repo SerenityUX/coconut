@@ -7,12 +7,12 @@ import {
   useWindowSize,
   useWindowWidth,
   useWindowHeight,
-} from '@react-hook/window-size'
+} from "@react-hook/window-size";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [width, height] = useWindowSize()
+  const [width, height] = useWindowSize();
 
   const steps = [
     {
@@ -29,6 +29,7 @@ export default function Home() {
     },
   ];
   const [step, setStep] = useState(steps[0]);
+  const [gender, setGender] = useState("male");
 
   return (
     <div>
@@ -38,24 +39,270 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <main className={styles.main}>
+      <main className={styles.main}>
         <div className={styles.navigation}>
           <div className={styles.topNavigation}>
-          <p onClick={() => {
-            if(step["number"] - 2 >= 0) {
-              setStep(steps[step["number"] - 2])
-            }
-          }}>back</p>
-          <p>{step["content"]}</p>
-          <p>{step["number"]}/3</p>
+            <p
+              onClick={() => {
+                if (step["number"] - 2 >= 0) {
+                  setStep(steps[step["number"] - 2]);
+                }
+              }}
+            >
+              back
+            </p>
+            <p>{step["content"]}</p>
+            <p>{step["number"]}/3</p>
           </div>
           <div>
-          <div style={{width: "100%", left: "0px", top: "0px", backgroundColor: "#fff", height: 12, borderRadius: 16}}>
-          <div style={{width: step["number"] == 1 ? ("33.333%") : ((0.333 * (step["number"])) * (width - 32)), backgroundColor: "#EC1663", height: "12px", borderRadius: step["number"] == 3 ? ("16px 16px 16px 16px") : ("16px 0px 0px 16px")}}/>
-          </div>
+            <div
+              style={{
+                width: "100%",
+                left: "0px",
+                top: "0px",
+                backgroundColor: "#fff",
+                height: 12,
+                borderRadius: 16,
+              }}
+            >
+              <div
+                style={{
+                  width:
+                    step["number"] == 1
+                      ? "33.333%"
+                      : 0.333 * step["number"] * (width - 32),
+                  backgroundColor: "#EC1663",
+                  height: "12px",
+                  borderRadius:
+                    step["number"] == 3 ? "8px 8px 8px 8px" : "8px 0px 0px 8px",
+                }}
+              />
+            </div>
           </div>
         </div>
       </main>
+      
+        <div>
+        <div style={{ marginLeft: "8px", marginRight: "32px" }}>
+          <h1
+            style={{
+              fontStyle: "normal",
+              fontWeight: "500",
+              marginBottom: "8px",
+              fontSize: "28px",
+              lineHeight: "34px",
+              fontFamily: "Helvetica Neue",
+            }}
+          >
+            Oh gosh, who caught your eyes this time?
+          </h1>
+          <input
+            style={{
+              backgroundColor: "#F2F2F2",
+              paddingLeft: "8px",
+              border: "none",
+              borderRadius: "8px",
+              height: "46px",
+              border: "1px #CBCBCB",
+              fontSize: "18px",
+              width: "100%",
+            }}
+            type="text"
+            name="nameGift"
+            placeholder="Marsha Mellow"
+          />
+        </div>
+
+        <div style={{ marginLeft: "8px", marginRight: "32px" }}>
+          <h1
+            style={{
+              fontStyle: "normal",
+              fontWeight: "500",
+              marginBottom: "16px",
+              fontSize: "28px",
+              lineHeight: "34px",
+              fontFamily: "Helvetica Neue",
+            }}
+          >
+            Their Gender?
+          </h1>
+          <div
+            style={{
+              marginTop: 16,
+              marginBottom: 16,
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+            }}
+          >
+            {gender == "male" ? (
+              <div
+                style={{
+                  width: "33%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#FFE2ED",
+                  borderRadius: "8px 0px 0px 8px",
+                }}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    textDecoration: "underline",
+                    fontWeight: "regular",
+                    fontFamily: "Helvetica Neue",
+                    color: "#EC1663",
+                  }}
+                >
+                  Male
+                </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: "33%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#F2F2F2",
+                  borderRadius: "8px 0px 0px 8px",
+                }}
+                onClick={() => setGender("male")}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "regular",
+                    fontFamily: "Helvetica Neue",
+                    color: "#969696",
+                  }}
+                >
+                  Male
+                </p>
+              </div>
+            )}
+            {gender == "female" ? (
+              <div
+                style={{
+                  width: "33%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#FFE2ED",
+                  borderRadius: "0px 0px 0px 0px",
+                }}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    textDecoration: "underline",
+                    fontWeight: "regular",
+                    fontFamily: "Helvetica Neue",
+                    color: "#EC1663",
+                  }}
+                >
+                  Female
+                </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: "33%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#F2F2F2",
+                  borderRadius: "0px 0px 0px 0px",
+                }}
+                onClick={() => setGender("female")}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "regular",
+                    fontFamily: "Helvetica Neue",
+                    color: "#969696",
+                  }}
+                >
+                  Female
+                </p>
+              </div>
+            )}
+            {gender == "other" ? (
+              <div
+                style={{
+                  width: "33%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#FFE2ED",
+                  borderRadius: "0px 8px 8px 0px",
+                }}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    textDecoration: "underline",
+                    fontWeight: "regular",
+                    fontFamily: "Helvetica Neue",
+                    color: "#EC1663",
+                  }}
+                >
+                  Other
+                </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: "33%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#F2F2F2",
+                  borderRadius: "0px 8px 8px 0px",
+                }}
+                onClick={() => setGender("other")}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "regular",
+                    fontFamily: "Helvetica Neue",
+                    color: "#969696",
+                  }}
+                >
+                  Other
+                </p>
+              </div>
+            )}
+          </div>
+          <div
+            onClick={() => {
+              setStep(steps[step["number"]]);
+            }}
+            style={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#EC1663",
+              borderRadius: "16px",
+              height: "48px",
+            }}
+          >
+            <p
+              style={{
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                fontWeight: "regular",
+                fontFamily: "Helvetica Neue",
+                color: "#FFE2ED",
+                fontSize: "16px",
+                marginTop: "24px",
+                height: "48px",
+                display: "flex",
+              }}
+            >
+              Continue
+            </p>
+          </div>
+        </div>
+        </div>
     </div>
   );
 }
