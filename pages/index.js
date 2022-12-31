@@ -11,30 +11,6 @@ import {
 
 const inter = Inter({ subsets: ["latin"] });
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
-
-export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowDimensions;
-}
-
-
 export default function Home() {
   const [width, height] = useWindowSize()
 
@@ -75,7 +51,7 @@ export default function Home() {
           </div>
           <div>
           <div style={{width: "100%", left: "0px", top: "0px", backgroundColor: "#fff", height: 12, borderRadius: 16}}>
-          <div style={{width: step["number"] == 1 ? (0.333 * (width - 32)) : ((0.333 * (step["number"])) * (width - 32)), backgroundColor: "#EC1663", height: "12px", borderRadius: step["number"] == 3 ? ("16px 16px 16px 16px") : ("16px 0px 0px 16px")}}/>
+          <div style={{width: step["number"] == 1 ? ("33.333%") : ((0.333 * (step["number"])) * (width - 32)), backgroundColor: "#EC1663", height: "12px", borderRadius: step["number"] == 3 ? ("16px 16px 16px 16px") : ("16px 0px 0px 16px")}}/>
           </div>
           </div>
         </div>
