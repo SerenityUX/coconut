@@ -1,22 +1,28 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import React, { useState } from 'react';
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "../styles/Home.module.css";
+import React, { useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const steps = [
+    {
+      content: "demographics",
+      number: 1,
+    },
+    {
+      content: "interests",
+      number: 2,
+    },
+    {
+      content: "flavors",
+      number: 3,
+    },
+  ];
   const [step, setStep] = useState(steps[0]);
-  const steps = [{
-    "content": "demographics",
-    "number": 1
-  },
-  {
-    "content": "interests",
-    "number": 2
-  }
-  ]
+
   return (
     <div>
       <Head>
@@ -27,14 +33,14 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <p>
+          <p onClick={() => {
             
-          </p>
-          <p>
-            {step}/3
-          </p>
+          }}>back</p>
+          <p>{step["number"]}/3</p>
+          <p>{step["content"]}</p>
+
         </div>
       </main>
     </div>
-  )
+  );
 }
