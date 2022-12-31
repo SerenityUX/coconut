@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <div>
           
-          <div style={{width: (0.33 * (step["number"])) * (width - 33), transition: "all 1s", backgroundColor: "#EC1663", height: "12px", borderRadius: step["number"] == 3 ? ("16px 16px 16px 16px") : ("16px 0px 0px 16px")}}/>
+          <div style={{position: "absolute", width: ((0.33 * (step["number"])) * (width - 33)), transition: "all 1s", backgroundColor: "#EC1663", height: "12px", borderRadius: step["number"] == 3 ? ("16px 16px 16px 16px") : ("16px 0px 0px 16px")}}/>
           <div style={{width: "100%", backgroundColor: "#fff", height: 12, borderRadius: 16}}></div>
           </div>
         </div>
