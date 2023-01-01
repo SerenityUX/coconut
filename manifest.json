@@ -1,0 +1,10 @@
+{
+    "name": "Coconut",
+    "short_name": "Coconut",
+    "theme_color": "#ec1663",
+    "background_color": "#5a0f2a",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/"
+}

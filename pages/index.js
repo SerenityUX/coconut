@@ -617,20 +617,61 @@ export default function Home() {
         </div>
       ) : null}
       {step == 2 ? (
+        <div>
         <p style={{ fontStyle: "normal", fontFamily: "Helvetica Neue", marginLeft: 16, marginRight: 16, fontWeight: "600", fontSize: "48px" }}>
           Hey {recipientName}, {pickupContent[niche][subcategory]}
         </p>
-      ) : null}
-      <p onClick={() =>  {
+        <p 
+      style={{
+        fontStyle: "normal",
+fontWeight: "500",
+fontSize: "18px",
+marginLeft: "16px",
+lineHeight: "21px",
+fontFamily: "Helvetica Neue",
+color: "#EC1663"
+      }}
+        onClick={() =>  {
          if (navigator.share) {
           navigator.share({
             title: recipientName + ' Pickup Line',
-            text: "Hey" + recipientName + "," + pickupContent[niche][subcategory]
+            text: "Hey " + recipientName + ", " + pickupContent[niche][subcategory]
           })
             .then(() => console.log('Successful share'))
             .catch((error) => console.log('Error sharing', error));
         }
-      }}>Share Message</p>
+      }}>Share Pickup Line</p>
+        <a
+        style={{
+          fontStyle: "normal",
+          fontWeight: "500",
+          fontSize: "18px",
+          lineHeight: "21px",
+          marginLeft: "16px",
+          fontFamily: "Helvetica Neue",
+          color: "#EC1663",
+          textDecoration: "none"
+        }}
+
+        href={'https://coconut.up.railway.app/postcard?' + new URLSearchParams({name: recipientName, picline: pickupContent[niche][subcategory], gender: gender})}
+      >Create Postcard</a>
+        <p 
+      style={{
+        fontStyle: "normal",
+fontWeight: "500",
+fontSize: "18px",
+lineHeight: "21px",
+marginLeft: "16px",
+fontFamily: "Helvetica Neue",
+color: "#EC1663"
+      }}
+        onClick={() =>  {
+         setStep(0)
+      }}>Generate Another</p>
+        </div>
+      ) : null}
+      
+
     </div>
   );
 }
